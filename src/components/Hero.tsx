@@ -142,18 +142,24 @@ const Hero: React.FC = () => {
                         {currentSlide.subtitle}
                     </motion.span>
 
-                    <motion.h1
-                        variants={itemVariants}
-                        className="text-[60px] md:text-[90px] xl:text-[110px] 2xl:text-[130px] leading-[0.85] font-display font-black uppercase mb-8 tracking-[-0.02em] whitespace-nowrap"
-                    >
-                        <span className="text-red-october shadow-black/40">GHANA</span> <br />
-                        <span className="text-twenty-carat">70 </span>
-                        <span className="text-ghana-green">YEARS</span>
-                    </motion.h1>
+                    <div className="flex flex-col gap-2 mb-8">
+                        <motion.h1
+                            variants={itemVariants}
+                            className="text-[60px] md:text-[90px] xl:text-[110px] 2xl:text-[130px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green"
+                        >
+                            GHANA
+                        </motion.h1>
+                        <motion.h1
+                            variants={itemVariants}
+                            className="text-[60px] md:text-[90px] xl:text-[110px] 2xl:text-[130px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
+                        >
+                            70 YEARS
+                        </motion.h1>
+                    </div>
 
                     <motion.p
                         variants={itemVariants}
-                        className="text-white/70 text-base md:text-lg max-w-md mx-auto xl:mx-0 mb-12 leading-relaxed font-medium"
+                        className="text-white/60 text-sm md:text-base max-w-[85%] xl:max-w-[400px] mx-auto xl:mx-0 mb-10 leading-relaxed font-medium"
                     >
                         {currentSlide.description}
                     </motion.p>
@@ -165,7 +171,7 @@ const Hero: React.FC = () => {
                         <div className="btn-circle-plus group-hover:bg-carol/80 transition-all duration-300">
                             <span>+</span>
                         </div>
-                        <div className="btn-pill-outline group-hover:bg-white/5 transition-all duration-300">
+                        <div className="btn-pill-outline group-hover:bg-white/5 transition-all duration-300 border-white/30 text-[11px]">
                             EXPLORE FULL GALLERY
                         </div>
                     </motion.div>
