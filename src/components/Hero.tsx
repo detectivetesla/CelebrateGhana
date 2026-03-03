@@ -99,11 +99,11 @@ const Hero: React.FC = () => {
     const currentSlide = HERO_SLIDES[activeIndex];
 
     // The active card is the background/content on the left.
-    // The cards on the right should only show the upcoming slides.
+    // The cards on the right should only show the strictly 3 upcoming slides.
     const orderedSlides = [
         ...HERO_SLIDES.slice(activeIndex + 1),
         ...HERO_SLIDES.slice(0, activeIndex)
-    ];
+    ].slice(0, 3);
 
     return (
         <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden bg-black">
