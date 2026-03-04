@@ -145,13 +145,13 @@ const Hero: React.FC = () => {
                     <div className="flex flex-col gap-2 mb-8">
                         <motion.h1
                             variants={itemVariants}
-                            className="text-[60px] md:text-[90px] xl:text-[110px] 2xl:text-[130px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green"
+                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green"
                         >
                             GHANA
                         </motion.h1>
                         <motion.h1
                             variants={itemVariants}
-                            className="text-[60px] md:text-[90px] xl:text-[110px] 2xl:text-[130px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
+                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
                         >
                             70 YEARS
                         </motion.h1>
@@ -159,7 +159,7 @@ const Hero: React.FC = () => {
 
                     <motion.p
                         variants={itemVariants}
-                        className="text-white/60 text-sm md:text-base max-w-[85%] xl:max-w-[400px] mx-auto xl:mx-0 mb-10 leading-relaxed font-medium"
+                        className="text-white/60 text-sm md:text-lg max-w-[85%] xl:max-w-[480px] mx-auto xl:mx-0 mb-10 leading-relaxed font-medium"
                     >
                         {currentSlide.description}
                     </motion.p>
@@ -168,23 +168,23 @@ const Hero: React.FC = () => {
                         variants={itemVariants}
                         className="btn-plus-explore cursor-pointer group inline-flex"
                     >
-                        <div className="btn-circle-plus group-hover:bg-carol/80 transition-all duration-300">
+                        <div className="btn-circle-plus w-12 h-12 text-2xl group-hover:bg-carol/80 transition-all duration-300">
                             <span>+</span>
                         </div>
-                        <div className="btn-pill-outline group-hover:bg-white/5 transition-all duration-300 border-white/30 text-[11px]">
+                        <div className="btn-pill-outline px-10 py-4 group-hover:bg-white/5 transition-all duration-300 border-white/30 text-[12px]">
                             EXPLORE FULL GALLERY
                         </div>
                     </motion.div>
                 </motion.div>
 
                 {/* Right Side: Rotational Navigation Cards (First larger, rest uniform) */}
-                <div className="hidden xl:flex gap-5 items-end justify-end xl:w-[58%] z-30 translate-y-12 translate-x-12">
+                <div className="hidden xl:flex gap-5 items-end justify-end xl:w-[58%] z-30 pb-16">
                     <AnimatePresence mode="popLayout" initial={false}>
                         {orderedSlides.map((item, i) => {
                             const originalIndex = HERO_SLIDES.findIndex(s => s.id === item.id);
 
                             // First card bigger, others uniformly smaller
-                            const dimensions = i === 0 ? { w: 320, h: 450 } : { w: 240, h: 340 };
+                            const dimensions = i === 0 ? { w: 360, h: 500 } : { w: 280, h: 380 };
 
                             return (
                                 <motion.div
@@ -230,34 +230,38 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Bottom Controls */}
-            <div className="absolute bottom-16 left-0 right-0 z-20">
-                <div className="max-w-[1400px] mx-auto px-10 flex items-center justify-between gap-16">
-                    <div className="flex gap-6">
+            <div className="absolute bottom-10 xl:bottom-16 left-0 right-0 z-40 px-6 md:px-10">
+                <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
+                    {/* Caret Navigation */}
+                    <div className="flex gap-4 xl:gap-6 justify-center md:justify-start xl:w-[42%] shrink-0 pl-0 xl:pl-10">
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={prevSlide}
-                            className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                            className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
                         >
-                            <ChevronLeft size={28} />
+                            <ChevronLeft size={24} className="xl:hidden" />
+                            <ChevronLeft size={28} className="hidden xl:block" />
                         </motion.button>
                         <div className="relative">
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={nextSlide}
-                                className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                                className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
                             >
-                                <ChevronRight size={28} />
+                                <ChevronRight size={24} className="xl:hidden" />
+                                <ChevronRight size={28} className="hidden xl:block" />
                             </motion.button>
-                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-lg">
-                                <div className="w-2 h-2 bg-black rounded-full"></div>
+                            <div className="absolute -bottom-1 -right-1 w-3 h-3 xl:w-4 xl:h-4 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                <div className="w-1.5 h-1.5 xl:w-2 xl:h-2 bg-black rounded-full"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-12 flex-1 relative pr-[120px]">
-                        <div className="h-[2px] w-full bg-white/10 relative overflow-hidden rounded-full">
+                    {/* Progress Bar & Number */}
+                    <div className="flex items-center gap-6 xl:gap-10 w-full xl:w-[58%]">
+                        <div className="h-[2px] w-full bg-white/20 relative overflow-hidden rounded-full max-w-sm xl:max-w-md ml-auto">
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: `${((activeIndex + 1) / totalSlides) * 100}%` }}
@@ -269,7 +273,7 @@ const Hero: React.FC = () => {
                             key={`index-${activeIndex}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-white text-6xl font-display font-black tracking-tighter opacity-100 absolute right-0 font-display"
+                            className="text-white text-4xl xl:text-5xl font-display font-black tracking-tighter shrink-0 w-12 text-right pr-4"
                         >
                             0{activeIndex + 1}
                         </motion.span>
