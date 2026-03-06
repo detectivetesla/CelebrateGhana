@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
                 </motion.div>
             </AnimatePresence>
 
-            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between h-[80vh] pt-24">
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between min-h-[70vh] xl:h-[80vh] pt-28 md:pt-32 xl:pt-24">
                 {/* Left Side: Content */}
                 <motion.div
                     key={`content-${activeIndex}`}
@@ -137,22 +137,22 @@ const Hero: React.FC = () => {
                 >
                     <motion.span
                         variants={itemVariants}
-                        className="text-white/60 text-sm font-semibold tracking-[0.3em] uppercase mb-6 block"
+                        className="text-white/60 text-[10px] md:text-sm font-semibold tracking-[0.3em] uppercase mb-4 md:mb-6 block"
                     >
                         {currentSlide.subtitle}
                     </motion.span>
 
-                    <div className="flex flex-col gap-2 mb-8">
+                    <div className="flex flex-col gap-1 md:gap-2 mb-6 md:mb-8">
                         <motion.h1
                             variants={itemVariants}
-                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[1.1] font-display font-black uppercase tracking-[-0.02em] whitespace-nowrap"
+                            className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[1] md:leading-[1.1] font-display font-black uppercase tracking-[-0.02em] whitespace-normal md:whitespace-nowrap"
                         >
                             <span className="bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green">GHANA</span>
-                            <span className="inline-block ml-6 bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-300 to-black font-display font-black translate-y-[-0.05em]">@</span>
+                            <span className="inline-block ml-3 md:ml-6 bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-300 to-black font-display font-black translate-y-[-0.05em]">@</span>
                         </motion.h1>
                         <motion.h1
                             variants={itemVariants}
-                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
+                            className="text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
                         >
                             69 YEARS
                         </motion.h1>
@@ -160,33 +160,31 @@ const Hero: React.FC = () => {
 
                     <motion.p
                         variants={itemVariants}
-                        className="text-white/60 text-sm md:text-lg max-w-[85%] xl:max-w-[480px] mx-auto xl:mx-0 mb-10 leading-relaxed font-medium"
+                        className="text-white/60 text-xs sm:text-sm md:text-lg max-w-[90%] xl:max-w-[480px] mx-auto xl:mx-0 mb-8 md:mb-10 leading-relaxed font-medium"
                     >
                         {currentSlide.description}
                     </motion.p>
 
                     <motion.div
                         variants={itemVariants}
-                        className="btn-plus-explore cursor-pointer group inline-flex"
+                        className="btn-plus-explore cursor-pointer group inline-flex scale-90 md:scale-100"
                     >
-                        <div className="btn-circle-plus w-12 h-12 text-2xl group-hover:bg-carol/80 transition-all duration-300">
+                        <div className="btn-circle-plus w-10 h-10 md:w-12 md:h-12 text-xl md:text-2xl group-hover:bg-carol/80 transition-all duration-300">
                             <span>+</span>
                         </div>
-                        <div className="btn-pill-outline px-10 py-4 group-hover:bg-white/5 transition-all duration-300 border-white/30 text-[12px]">
+                        <div className="btn-pill-outline px-6 md:px-10 py-3 md:py-4 group-hover:bg-white/5 transition-all duration-300 border-white/30 text-[10px] md:text-[12px]">
                             EXPLORE FULL GALLERY
                         </div>
                     </motion.div>
                 </motion.div>
 
-                {/* Right Side: Rotational Navigation Cards (First larger, rest uniform) */}
+                {/* Right Side: Rotational Navigation Cards - Desktop Only */}
+                {/* ... (keep hidden xl:flex) ... */}
                 <div className="hidden xl:flex gap-5 items-end justify-end xl:w-[58%] z-30 pb-16">
                     <AnimatePresence mode="popLayout" initial={false}>
                         {orderedSlides.map((item, i) => {
                             const originalIndex = HERO_SLIDES.findIndex(s => s.id === item.id);
-
-                            // First card bigger, others uniformly smaller
                             const dimensions = i === 0 ? { w: 360, h: 500 } : { w: 280, h: 380 };
-
                             return (
                                 <motion.div
                                     key={item.id}
@@ -231,31 +229,31 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Bottom Controls */}
-            <div className="absolute bottom-8 xl:bottom-12 left-0 right-0 z-40 px-6 md:px-10">
-                <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="absolute bottom-6 md:bottom-8 xl:bottom-12 left-0 right-0 z-40 px-6 md:px-10">
+                <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
                     {/* Left: Navigation Carets */}
-                    <div className="flex gap-4 md:gap-5 order-2 md:order-1">
+                    <div className="flex gap-4 md:gap-5 order-2 md:order-1 self-center md:self-auto">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={prevSlide}
-                            className="w-12 h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
+                            className="w-10 h-10 md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
                         >
-                            <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
+                            <ChevronLeft size={20} md:size={24} className="group-hover:-translate-x-0.5 transition-transform" />
                         </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={nextSlide}
-                            className="w-12 h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
+                            className="w-10 h-10 md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
                         >
-                            <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
+                            <ChevronRight size={20} md:size={24} className="group-hover:translate-x-0.5 transition-transform" />
                         </motion.button>
                     </div>
 
                     {/* Right: Progress + Number Group */}
-                    <div className="flex items-center gap-6 xl:gap-8 w-full md:w-[450px] order-1 md:order-2">
-                        <div className="h-[3px] w-full bg-white/10 relative overflow-hidden rounded-full">
+                    <div className="flex items-center gap-4 md:gap-6 xl:gap-8 w-full md:w-[450px] order-1 md:order-2">
+                        <div className="h-[2px] md:h-[3px] w-full bg-white/10 relative overflow-hidden rounded-full">
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: `${((activeIndex + 1) / totalSlides) * 100}%` }}
@@ -267,7 +265,7 @@ const Hero: React.FC = () => {
                             key={`index-${activeIndex}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-white text-4xl xl:text-5xl font-display font-black tracking-tighter shrink-0 w-16 text-right"
+                            className="text-white text-2xl md:text-4xl xl:text-5xl font-display font-black tracking-tighter shrink-0 w-12 md:w-16 text-right"
                         >
                             0{activeIndex + 1}
                         </motion.span>
