@@ -1,10 +1,45 @@
-
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const History: React.FC = () => {
+    const images = [
+        '/assets/history-1.jpg',
+        '/assets/history-2.jpg',
+        '/assets/history-3.jpg',
+        '/assets/history-4.jpg',
+        '/assets/history-5.jpg',
+        '/assets/history-6.jpg',
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (selectedImage) return;
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [images.length, selectedImage]);
+
     return (
         <section className="py-24 bg-floral-white relative overflow-hidden" id="history">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-downriver/5 -skew-x-12 translate-x-1/4 pointer-events-none"></div>
+            {/* Background Wallpapers */}
+            <div className="absolute top-0 left-0 w-1/2 h-full pointer-events-none overflow-hidden">
+                <div
+                    className="w-full h-full bg-cover bg-center opacity-[0.08]"
+                    style={{ backgroundImage: `url('/assets/bg-adinkra-symbols.jpg')` }}
+                />
+            </div>
+            <div
+                className="absolute top-0 right-0 w-1/2 h-full -skew-x-12 translate-x-1/4 pointer-events-none overflow-hidden"
+            >
+                <div
+                    className="w-full h-full bg-cover bg-center opacity-[0.15]"
+                    style={{ backgroundImage: `url('/assets/bg-heritage-art.jpg')` }}
+                />
+            </div>
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div
@@ -12,14 +47,47 @@ const History: React.FC = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="relative"
+                        className="relative flex flex-col items-center"
                     >
                         <div className="absolute -top-6 -left-6 w-32 h-32 bg-twenty-carat/20 rounded-full blur-3xl"></div>
-                        <img
-                            src="https://images.unsplash.com/photo-1590483254199-0a672322394a?q=80&w=1000"
-                            alt="Independence Arch Ghana"
-                            className="rounded-[60px] shadow-2xl relative z-10 border-8 border-white"
-                        />
+
+                        {/* Image Container */}
+                        <div
+                            className="relative w-full max-w-[450px] h-[550px] rounded-[60px] shadow-2xl z-10 border-8 border-white overflow-hidden bg-downriver/5 group mx-auto cursor-zoom-in"
+                            onClick={() => setSelectedImage(images[currentIndex])}
+                        >
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={currentIndex}
+                                    src={images[currentIndex]}
+                                    alt={`History Image ${currentIndex + 1}`}
+                                    initial={{ opacity: 0, scale: 1.1 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ duration: 0.8 }}
+                                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                />
+                            </AnimatePresence>
+
+                            {/* Pagination Dots (Eclipses) */}
+                            <div
+                                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {images.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentIndex === index
+                                            ? "bg-twenty-carat w-6"
+                                            : "bg-white/50 hover:bg-white"
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
                         <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-ghana-green/10 rounded-full blur-3xl"></div>
                     </motion.div>
                     <motion.div
@@ -71,8 +139,46 @@ const History: React.FC = () => {
                     </motion.div>
                 </div>
             </div>
+
+            {/* Image Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-black/90 backdrop-blur-xl"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <motion.button
+                            className="absolute top-8 right-8 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors border border-white/10 z-10"
+                            onClick={() => setSelectedImage(null)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <X size={24} />
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="relative w-full max-w-7xl h-full flex items-center justify-center pointer-events-none"
+                        >
+                            <img
+                                src={selectedImage}
+                                alt="Ghana History Detail"
+                                className="max-w-full max-h-full object-contain rounded-3xl shadow-[0_0_100px_rgba(0,0,0,0.5)] border-4 border-white/10"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
 
 export default History;
+
+

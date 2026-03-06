@@ -26,6 +26,22 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green;
   }
 
+  .red-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-red-october to-[#9B1B06];
+  }
+
+  .green-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-[#00A35C] to-ghana-green;
+  }
+
+  .gold-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-[#FFD700] via-twenty-carat to-[#B8860B];
+  }
+
+  .white-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60;
+  }
+
   .btn-primary {
     @apply px-6 py-3 bg-twenty-carat hover:bg-twenty-carat/90 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-twenty-carat/20;
   }

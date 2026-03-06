@@ -9,7 +9,7 @@ const HERO_SLIDES = [
         subtitle: "Heritage",
         category: "Monument",
         description: "The final resting place of Dr. Kwame Nkrumah, Ghana's first president and a pioneer of Pan-Africanism.",
-        image: "/assets/hero-1.png"
+        image: "/assets/hero-mausoleum.png"
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const HERO_SLIDES = [
         subtitle: "Freedom",
         category: "Landmark",
         description: "Built in 1961, this iconic arch celebrates Ghana's victory over colonial rule.",
-        image: "/assets/hero-2-premium.png"
+        image: "/assets/hero-independence-arch.png"
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const HERO_SLIDES = [
         subtitle: "Justice",
         category: "Architecture",
         description: "A symbol of African pride and the quest for unity among all nations.",
-        image: "/assets/hero-3-premium.png"
+        image: "/assets/hero-black-star-gate.png"
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ const HERO_SLIDES = [
         subtitle: "History",
         category: "Fortress",
         description: "A profound historical site featuring centuries-old cannons pointing towards the Atlantic Ocean.",
-        image: "/assets/cape-coast-hero.png"
+        image: "/assets/hero-cape-coast.png"
     },
     {
         id: 5,
@@ -41,7 +41,7 @@ const HERO_SLIDES = [
         subtitle: "Leadership",
         category: "Landmark",
         description: "The presidential palace of Ghana, featuring distinctive modern architecture inspired by the golden stool.",
-        image: "/assets/jubilee-house-hero.png"
+        image: "/assets/hero-jubilee-house.png"
     },
     {
         id: 6,
@@ -49,7 +49,7 @@ const HERO_SLIDES = [
         subtitle: "Heritage",
         category: "Fortress",
         description: "A monumental historical fort featuring its iconic white walls and striking coastal views.",
-        image: "/assets/elmina-castle-hero.png"
+        image: "/assets/hero-elmina-castle.png"
     }
 ];
 
@@ -145,15 +145,16 @@ const Hero: React.FC = () => {
                     <div className="flex flex-col gap-2 mb-8">
                         <motion.h1
                             variants={itemVariants}
-                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green"
+                            className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[1.1] font-display font-black uppercase tracking-[-0.02em] whitespace-nowrap"
                         >
-                            GHANA
+                            <span className="bg-clip-text text-transparent bg-gradient-to-br from-red-october via-twenty-carat to-ghana-green">GHANA</span>
+                            <span className="inline-block ml-6 bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-300 to-black font-display font-black translate-y-[-0.05em]">@</span>
                         </motion.h1>
                         <motion.h1
                             variants={itemVariants}
                             className="text-[70px] md:text-[100px] xl:text-[120px] 2xl:text-[150px] leading-[0.8] font-display font-black uppercase tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
                         >
-                            70 YEARS
+                            69 YEARS
                         </motion.h1>
                     </div>
 
@@ -230,42 +231,35 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Bottom Controls */}
-            <div className="absolute bottom-10 xl:bottom-16 left-0 right-0 z-40 px-6 md:px-10">
-                <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
-                    {/* Caret Navigation */}
-                    <div className="flex gap-4 xl:gap-6 justify-center md:justify-start xl:w-[42%] shrink-0 pl-0 xl:pl-10">
+            <div className="absolute bottom-8 xl:bottom-12 left-0 right-0 z-40 px-6 md:px-10">
+                <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+                    {/* Left: Navigation Carets */}
+                    <div className="flex gap-4 md:gap-5 order-2 md:order-1">
                         <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             onClick={prevSlide}
-                            className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
+                            className="w-12 h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
                         >
-                            <ChevronLeft size={24} className="xl:hidden" />
-                            <ChevronLeft size={28} className="hidden xl:block" />
+                            <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
                         </motion.button>
-                        <div className="relative">
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={nextSlide}
-                                className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
-                            >
-                                <ChevronRight size={24} className="xl:hidden" />
-                                <ChevronRight size={28} className="hidden xl:block" />
-                            </motion.button>
-                            <div className="absolute -bottom-1 -right-1 w-3 h-3 xl:w-4 xl:h-4 bg-white rounded-full flex items-center justify-center shadow-lg">
-                                <div className="w-1.5 h-1.5 xl:w-2 xl:h-2 bg-black rounded-full"></div>
-                            </div>
-                        </div>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={nextSlide}
+                            className="w-12 h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
+                        >
+                            <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
+                        </motion.button>
                     </div>
 
-                    {/* Progress Bar & Number */}
-                    <div className="flex items-center gap-6 xl:gap-10 w-full xl:w-[58%]">
-                        <div className="h-[2px] w-full bg-white/20 relative overflow-hidden rounded-full max-w-sm xl:max-w-md ml-auto">
+                    {/* Right: Progress + Number Group */}
+                    <div className="flex items-center gap-6 xl:gap-8 w-full md:w-[450px] order-1 md:order-2">
+                        <div className="h-[3px] w-full bg-white/10 relative overflow-hidden rounded-full">
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: `${((activeIndex + 1) / totalSlides) * 100}%` }}
-                                className="absolute top-0 left-0 h-full bg-carol"
+                                className="absolute top-0 left-0 h-full bg-gradient-to-r from-red-october via-twenty-carat to-ghana-green"
                                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             />
                         </div>
@@ -273,7 +267,7 @@ const Hero: React.FC = () => {
                             key={`index-${activeIndex}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-white text-4xl xl:text-5xl font-display font-black tracking-tighter shrink-0 w-12 text-right pr-4"
+                            className="text-white text-4xl xl:text-5xl font-display font-black tracking-tighter shrink-0 w-16 text-right"
                         >
                             0{activeIndex + 1}
                         </motion.span>

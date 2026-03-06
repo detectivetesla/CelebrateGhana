@@ -5,38 +5,38 @@ import { ArrowRight, MapPin } from 'lucide-react';
 const galleryItems = [
     {
         id: 1,
-        title: "Cape Coast Castle",
-        location: "Central Region",
-        image: "https://images.unsplash.com/photo-1590483254199-0a672322394a?q=80&w=1000",
-        category: "Historical"
-    },
-    {
-        id: 2,
-        title: "Mole National Park",
-        location: "Savannah Region",
-        image: "https://images.unsplash.com/photo-1596700000000-0a672322394a?q=80&w=1000",
-        category: "Nature"
-    },
-    {
-        id: 3,
         title: "Boti Falls",
         location: "Eastern Region",
-        image: "https://images.unsplash.com/photo-1600000000000-0a672322394a?q=80&w=1000",
+        image: "/assets/gallery-boti.png",
         category: "Adventure"
     },
     {
+        id: 2,
+        title: "Cape Coast Castle",
+        location: "Central Region",
+        image: "/assets/gallery-cape-coast.jpg",
+        category: "Historical"
+    },
+    {
+        id: 3,
+        title: "Larabanga Mosque",
+        location: "Savannah Region",
+        image: "/assets/gallery-larabanga.png",
+        category: "Religious"
+    },
+    {
         id: 4,
-        title: "Kumasi Kejetia",
+        title: "Manhyia Palace Museum",
         location: "Ashanti Region",
-        image: "https://images.unsplash.com/photo-1610000000000-0a672322394a?q=80&w=1000",
-        category: "Culture"
+        image: "/assets/gallery-manhyia.png",
+        category: "Historical"
     },
     {
         id: 5,
-        title: "Larabanga Mosque",
+        title: "Mole National Park",
         location: "Savannah Region",
-        image: "https://images.unsplash.com/photo-1620000000000-0a672322394a?q=80&w=1000",
-        category: "Religious"
+        image: "/assets/gallery-mole.jpg",
+        category: "Nature"
     }
 ];
 
@@ -53,7 +53,9 @@ const Gallery: React.FC = () => {
                 >
                     <div className="max-w-2xl">
                         <span className="text-twenty-carat font-bold tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
-                        <h2 className="text-4xl md:text-6xl font-display font-black mb-6">Discover the <span className="text-white">Gold Coast</span></h2>
+                        <h2 className="text-4xl md:text-6xl font-display font-black mb-6">
+                            <span className="white-gradient-text">Discover the</span> <span className="gold-gradient-text">Gold Coast</span>
+                        </h2>
                         <p className="text-floral-white/60 text-lg leading-relaxed">
                             From the historic castles of the coast to the majestic mountains of the east,
                             explore the diverse landscapes and rich history of Ghana.
