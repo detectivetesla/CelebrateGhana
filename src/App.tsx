@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import History from './components/History';
 import Gallery from './components/Gallery';
 import Culture from './components/Culture';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <History />
       <Culture />
       <Gallery />
+      <Analytics />
 
       <section className="py-40 relative overflow-hidden bg-downriver">
         <div

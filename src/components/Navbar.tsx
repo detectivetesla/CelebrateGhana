@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { track } from '@vercel/analytics';
 
 const Navbar: React.FC = () => {
     const [isCelebrating, setIsCelebrating] = useState(false);
@@ -8,6 +9,7 @@ const Navbar: React.FC = () => {
     const triggerCelebrate = () => {
         if (isCelebrating) return;
         setIsCelebrating(true);
+        track('celebrate_tap');
         setTimeout(() => setIsCelebrating(false), 2000);
     };
 
