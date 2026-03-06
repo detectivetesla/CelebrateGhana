@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
                     >
                         <span className="text-white text-[10px] md:text-sm font-black tracking-widest uppercase">Celebrate</span>
                         <div className="w-6 h-6 md:w-8 md:h-8 bg-white text-black rounded-full flex items-center justify-center transition-transform group-hover:rotate-12 group-hover:scale-110">
-                            <Heart size={14} md:size={18} fill="currentColor" className="text-red-october" />
+                            <Heart fill="currentColor" className="text-red-october w-3.5 h-3.5 md:w-[18px] md:h-[18px]" />
                         </div>
                     </div>
                 </div>

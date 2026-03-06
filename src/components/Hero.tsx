@@ -239,7 +239,7 @@ const Hero: React.FC = () => {
                             onClick={prevSlide}
                             className="w-10 h-10 md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
                         >
-                            <ChevronLeft size={20} md:size={24} className="group-hover:-translate-x-0.5 transition-transform" />
+                            <ChevronLeft className="group-hover:-translate-x-0.5 transition-transform w-5 h-5 md:w-6 md:h-6" />
                         </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
@@ -247,7 +247,7 @@ const Hero: React.FC = () => {
                             onClick={nextSlide}
                             className="w-10 h-10 md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-sm group"
                         >
-                            <ChevronRight size={20} md:size={24} className="group-hover:translate-x-0.5 transition-transform" />
+                            <ChevronRight className="group-hover:translate-x-0.5 transition-transform w-5 h-5 md:w-6 md:h-6" />
                         </motion.button>
                     </div>
 
